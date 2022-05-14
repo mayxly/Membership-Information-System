@@ -13,6 +13,10 @@
             <a class="h5 ml-3" th:href="@{/users/new}">Add New Member</a>
         </div>
 
+        <div th:if="${message}" class="alert alert-success text-center" style="margin: 1rem">
+            [[${message}]]
+        </div>
+
         <div class="col-lg-10">
             <table class="table table-bordered mla-5">
                 <thead class="thead-dark">
