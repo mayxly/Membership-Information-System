@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping ("/users")
+    @GetMapping("/users")
     public String showUserList(Model model) {
         List<User> listUsers = service.listAll();
         model.addAttribute("listUsers", listUsers);
@@ -37,16 +37,27 @@ public class UserController {
 
     @GetMapping("/users/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra) {
-       //Find user to edit
+        //Find user to edit
         try {
             User user = service.get(id);
             model.addAttribute("user", user);
-            model.addAttribute("pageTitle", "Edit User (ID: " +id+ ")");
+            model.addAttribute("pageTitle", "Edit User (ID: " + id + ")");
             return "user_form";
             //Cannot find user to edit
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", "The member has been saved successfully.");
             return "redirect:/users";
         }
+    }
+
+    @GetMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra) {
+        try {
+            service.delete(id);
+            ra.addFlashAttribute("message", "The member with ID " +id+ " has been deleted.");
+        } catch (UserNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/users";
     }
 }
