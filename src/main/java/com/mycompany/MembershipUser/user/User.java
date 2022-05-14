@@ -21,7 +21,7 @@ public class User {
     @Column(length = 45, nullable = false, name = "last_name")
     private String lastName;
 
-    private boolean enabled;
+    private boolean premium;
 
     public Integer getId() {
         return id;
@@ -75,11 +75,11 @@ public class User {
                 '}';
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public boolean isPremium() {
+        return premium;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setPremium(boolean premium) {
+        this.premium = premium;
     }
 }
