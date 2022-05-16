@@ -1,3 +1,4 @@
+# Information Management System
 This is a java web application that acts as an information management system for a simple membership program.
 In this project, I experiemented a lot with OOP and CRUD operations. I made my web application with Spring Boot, connected everything to a MySQL database and created the UI with HTML, Thymeleaf and Bootstrap.
 
